@@ -101,7 +101,7 @@ echo -e "$green      Install SSH Websocket               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 0.5
 clear
-wget https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/mousethain/tahu/main/menu/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Install XRAY              $NC"
@@ -109,7 +109,70 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 sleep 0.5
 clear
 wget https://raw.githubusercontent.com/mousethain/cvk/mouse/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-wget https://raw.githubusercontent.com/mousethain/cvk/mouse/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+sleep 2
+wget https://raw.githubusercontent.com/mousethain/tahu/main/nginx-ssl.sh && chmod +x nginx-ssl.sh && ./nginx-ssl.sh
+wget -q -O demeling.sh https://raw.githubusercontent.com/mousethain/tahu/main/demeling.sh && chmod +x demeling.sh && ./demeling.sh
+cd
+mkdir -p /root/udp
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+echo downloading udp-custom
+wget -q --show-progress --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=12safUbdfI6kUEfb1MBRxlDfmV8NAaJmb' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=12safUbdfI6kUEfb1MBRxlDfmV8NAaJmb" -O /root/udp/udp-custom && rm -rf /tmp/cookies.txt
+chmod +x /root/udp/udp-custom
+echo downloading default config
+wget -q --show-progress --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1klXTiKGUd2Cs5cBnH3eK2Q1w50Yx3jbf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1klXTiKGUd2Cs5cBnH3eK2Q1w50Yx3jbf" -O /root/udp/config.json && rm -rf /tmp/cookies.txt
+if [ -z "$1" ]; then
+cat <<EOF > /etc/systemd/system/udp-custom.service
+[Unit]
+Description=udp-custom by ©CyberVPN
+[Service]
+User=root
+Type=simple
+ExecStart=/root/udp/udp-custom server
+WorkingDirectory=/root/udp/
+Restart=always
+RestartSec=2s
+[Install]
+WantedBy=default.target
+EOF
+else
+cat <<EOF > /etc/systemd/system/udp-custom.service
+[Unit]
+Description=udp-custom by ©CyberVPN
+[Service]
+User=root
+Type=simple
+ExecStart=/root/udp/udp-custom server -exclude $1
+WorkingDirectory=/root/udp/
+Restart=always
+RestartSec=2s
+[Install]
+WantedBy=default.target
+EOF
+fi
+echo start service udp-custom
+systemctl start udp-custom &>/dev/null
+echo enable service udp-custom
+systemctl enable udp-custom &>/dev/null
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$green      Install Websocket              $NC"
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+sleep 2
+clear
+curl "https://raw.githubusercontent.com/mousethain/tahu/main/Insshws/insshws.sh" | bash
+cd /usr/bin
+sleep 1
+curl "https://raw.githubusercontent.com/mousethain/tahu/main/ipsec/ipsec.sh" | bash
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$green      Install OPENVPN             $NC"
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+wget "https://raw.githubusercontent.com/mousethain/tahu/main/Insshws/vpn.sh" && bash vpn.sh && rm vpn.sh
+clear
+echo "0 5 * * * root reboot" >> /etc/crontab
+echo "* * * * * root clog" >> /etc/crontab
+echo "59 * * * * root pkill 'menu'" >> /etc/crontab
+echo "0 1 * * * root xp" >> /etc/crontab
+echo "*/5 * * * * root notramcpu" >> /etc/crontab
+service cron restart
 clear
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
