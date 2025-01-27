@@ -158,7 +158,7 @@ echo -e "$green      Install Websocket              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-curl "https://raw.githubusercontent.com/mousethain/tahu/main/Insshws/insshws.sh" | bash
+curl "https://raw.githubusercontent.com/mousethain/cus/main/sshws/insshws.sh" | bash
 cd /usr/bin
 sleep 1
 curl "https://raw.githubusercontent.com/mousethain/tahu/main/ipsec/ipsec.sh" | bash
