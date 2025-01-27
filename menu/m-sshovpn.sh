@@ -1,18 +1,7 @@
 #!/bin/bash
 MYIP=$(wget -qO- ipinfo.io/ip);
 
-fi
-}
-IZIN=$(curl -sS https://raw.githubusercontent.com/mousethain/cvk/mouse/permission/ip | awk '{print $4}' | grep $MYIP)
-if [ $MYIP = $IZIN ]; then
-echo -e "\e[32mPermission Accepted...\e[0m"
-CEKEXPIRED
-else
-echo -e "\e[31mPermission Accepted...\e[0m";
 
-exit 0
-fi
-clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[0;100;33m       • SSH MENU •         \E[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
