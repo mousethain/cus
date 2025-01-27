@@ -677,7 +677,116 @@ chown -R www-data:www-data /etc/msmtprc
 
 print_success "Backup Server"
 
+# download script
+cd /usr/bin
+# menu
+wget -O menu "https://raw.githubusercontent.com/mousethain/cus/main/menu/menu.sh"
+wget -O m-vmess "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-vmess.sh"
+wget -O m-vless "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-vless.sh"
+wget -O running "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/running.sh"
+wget -O clearcache "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/clearcache.sh"
+wget -O m-ssws "https://raw.githubusercontent.com/mousethain/cus/main/menu/m-ssws.sh"
+wget -O m-trojan "https://raw.githubusercontent.com/mousethain/cus/main/menu/m-trojan.sh"
 
+# menu ssh ovpn
+wget -O m-sshovpn "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-sshovpn.sh"
+wget -O usernew "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/trial.sh"
+wget -O renew "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/renew.sh"
+wget -O hapus "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/hapus.sh"
+wget -O cek "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/cek.sh"
+wget -O member "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/member.sh"
+wget -O delete "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/delete.sh"
+wget -O autokill "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/autokill.sh"
+wget -O ceklim "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/tendang.sh"
+wget -O sshws "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/sshws.sh"
+
+# menu system
+wget -O m-system "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-system.sh"
+wget -O m-domain "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-domain.sh"
+wget -O add-host "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/add-host.sh"
+#wget -O port-change "https://raw.githubusercontent.com/mousethain/cvk/mouse/port/port-change.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/mousethain/cvk/mouse/xray/certv2ray.sh"
+#wget -O m-webmin "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-webmin.sh"
+wget -O speedtest "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/speedtest_cli.py"
+#wget -O about "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/about.sh"
+wget -O auto-reboot "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/auto-reboot.sh"
+wget -O restart "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/restart.sh"
+wget -O bw "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/bw.sh"
+wget -O m-tcp "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/tcp.sh"
+
+# change port
+#wget -O port-ssl "https://raw.githubusercontent.com/mousethain/cvk/mouse/port/port-ssl.sh"
+#wget -O port-ovpn "https://raw.githubusercontent.com/mousethain/cvk/mouse/port/port-ovpn.sh"
+#wget -O port-tr "https://raw.githubusercontent.com/mousethain/cvk/mouse/port/port-tr.sh"
+
+
+wget -O xp "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/xp.sh"
+#wget -O asu "https://raw.githubusercontent.com/mousethain/cvk/mouse/asu.sh"
+wget -O sshws "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/sshws.sh"
+
+chmod +x menu
+chmod +x m-vmess
+chmod +x m-vless
+chmod +x running
+chmod +x clearcache
+chmod +x m-ssws
+chmod +x m-trojan
+
+chmod +x m-sshovpn
+chmod +x usernew
+chmod +x trial
+chmod +x renew
+chmod +x hapus
+chmod +x cek
+chmod +x member
+chmod +x delete
+chmod +x autokill
+chmod +x ceklim
+chmod +x tendang
+chmod +x sshws
+
+chmod +x m-system
+chmod +x m-domain
+chmod +x add-host
+#chmod +x port-change
+chmod +x certv2ray
+#chmod +x m-webmin
+chmod +x speedtest
+#chmod +x about
+chmod +x auto-reboot
+chmod +x restart
+chmod +x bw
+chmod +x m-tcp
+
+#chmod +x port-ssl
+#chmod +x port-ovpn
+#chmod +x port-tr
+chmod +x xp
+#chmod +x asu
+chmod +x sshws
+cd
+
+
+cat > /etc/cron.d/re_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 2 * * * root /sbin/reboot
+END
+
+cat > /etc/cron.d/xp_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 0 * * * root /usr/bin/xp
+END
+
+cat > /home/re_otm <<-END
+7
+END
+
+service cron restart >/dev/null 2>&1
+service cron reload >/dev/null 2>&1
 
 # remove unnecessary files
 sleep 0.5
