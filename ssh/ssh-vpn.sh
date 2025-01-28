@@ -689,7 +689,7 @@ wget -O m-ssws "https://raw.githubusercontent.com/mousethain/cus/main/menu/m-ssw
 wget -O m-trojan "https://raw.githubusercontent.com/mousethain/cus/main/menu/m-trojan.sh"
 
 # menu ssh ovpn
-wget -O m-sshovpn "https://raw.githubusercontent.com/mousethain/cvk/mouse/menu/m-sshovpn.sh"
+wget -O m-sshovpn "https://raw.githubusercontent.com/mousethain/cus/main/menu/m-sshovpn.sh"
 wget -O usernew "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/trial.sh"
 wget -O renew "https://raw.githubusercontent.com/mousethain/cvk/mouse/ssh/renew.sh"
